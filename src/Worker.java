@@ -3,17 +3,18 @@ import animals.VoiceException;
 import food.Food;
 
 public class Worker {
-    boolean error;
-    public Animal animal1;
-    public boolean soundEcho=true;
+
     public void feed(Food food1, Animal animal1) {
         animal1.eat(food1);
+        System.out.println();
     }
 
     public void getVoice(Animal animal1) throws VoiceException {
-        if (!animal1.isExo()) {throw new VoiceException();}
-        else {
-            animal1.voice();
+     //   if(animal1.voice() == null)!animal1.isExo()
+        if (animal1.voice() == null) {
+            throw new VoiceException();
+        } else {
+            System.out.println(animal1.voice());
         }
     }
 }

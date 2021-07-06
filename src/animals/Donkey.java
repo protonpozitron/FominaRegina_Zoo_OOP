@@ -5,33 +5,42 @@ public class Donkey extends Herbivores implements Run, Swim, Voice {
     int weight;
     boolean exo;
 
-    public Donkey(String name, int weight, boolean exo) {
-        super(name, weight, exo);
+    public Donkey(String name, int weight) {
+        super(name, weight);
         this.name = name;
         this.weight = weight;
-        this.exo = exo;
     }
 
     public void sleep() {
-
-        System.out.println("Зверёк " + name + " лёг спать");
-        return;
+        if (full > 0) {
+            System.out.println("Зверёк " + name + " лёг спать");
+            full -= 1;
+        } else {
+            this.voice();
+        }
     }
 
     public void run() {
-        System.out.println("Бегает и играет");
+        if (full > 0) {
+            System.out.println("Бегает и играет");
+            full -= 2;
+        } else {
+            this.voice();
+        }
     }
 
     @Override
     public void swim() {
-
-        System.out.println("Осёл плавает");
+        if (full > 0) {
+            System.out.println("Осёл плавает");
+            full -= 3;
+        } else {
+            this.voice();
+        }
     }
 
     @Override
     public String voice() {
-        String donkeySound = "Иа";
-        System.out.println(donkeySound);
-        return donkeySound;
+        return "Ослик по имени " +name+ " говорит: Иа";
     }
 }

@@ -1,7 +1,12 @@
 package food;
-import animals.Animal;
-import animals.Carnivorous;
-
 public class Meat extends Food{
+    int callories;
+    public Meat (int callories){
+        super(callories);
+        this.callories= callories;
+    }
 
+    public int getCallories() {
+        return callories;
+    }
 }

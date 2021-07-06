@@ -1,48 +1,54 @@
 package animals;
 
-import food.Food;
-
 public class Duck extends Herbivores implements Voice, Swim, Fly, Run {
     String name;
     int weight;
-    boolean exo;
-    public Duck(String name, int weight, boolean exo) {
-        super(name, weight, exo);
-        this.name=name;
-        this.weight=weight;
-        this.exo=exo;
-    }
 
-    public void eat(Food food) {
+    public Duck(String name, int weight) {
+        super(name, weight);
+        this.name = name;
+        this.weight = weight;
     }
-
 
     public void sleep() {
-
-        System.out.println("Z-z-z-z-z");
+        if (full > 0) {
+            System.out.println("Z-z-z-z-z");
+        } else {
+            this.voice();
+        }
     }
 
     public void fly() {
-
-        System.out.println("FLY!");
+        if (full > 0) {
+            System.out.println("FLY!");
+            full -= 1;
+        } else {
+            this.voice();
+        }
     }
 
     @Override
     public void run() {
-
-        System.out.println("Сбегает");
+        if (full > 0) {
+            System.out.println("Сбегает");
+            full -= 2;
+        } else {
+            this.voice();
+        }
     }
 
     @Override
     public void swim() {
-        System.out.println("Утенок плавает");
+        if (full > 0) {
+            System.out.println("Утенок плавает");
+        } else {
+            this.voice();
+        }
 
     }
 
     @Override
     public String voice() {
-        //String krya;
-        System.out.println("krya");
-        return null;
+        return "Утенок по имени " + name + " говорит: Кря";
     }
 }
