@@ -1,6 +1,6 @@
 package animals;
 
-public class Zebra extends Herbivores implements Run, Voice {
+public class Zebra extends Herbivores implements Run, Voice, Swim {
     String name;
     int weight;
 
@@ -24,6 +24,14 @@ public class Zebra extends Herbivores implements Run, Voice {
         if (full > 0) {
             System.out.println("Бежит галопом");
             full -= 2;
+        } else {
+            this.voice();
+        }
+    }
+    public void swim() {
+        if (full > 0) {
+            System.out.println("Зебра по имени " + name + " ржет");
+            full -= 1;
         } else {
             this.voice();
         }

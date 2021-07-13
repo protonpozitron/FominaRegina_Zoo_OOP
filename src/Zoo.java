@@ -1,30 +1,45 @@
 import animals.*;
-import food.Grass;
-import food.Meat;
+import food.*;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class Zoo {
     public static void main(String[] args) throws VoiceException {
-
+        Beef beef = new Beef(12);
+        Barley barley=new Barley(10);
+        Carrot carrot=new Carrot(5);
+        Chiken chiken = new Chiken(4);
+        Horsemeat horsemeat=new Horsemeat(20);
+        Millet millet = new Millet(15);
+        Mutton mutton = new Mutton(21);
+        Oatmeal oatmeal = new Oatmeal(9);
+        Pork pork = new Pork(22);
+        List<Food> foodArray= new ArrayList<>();
+        Collections.addAll( foodArray, beef,barley,carrot,chiken,horsemeat,millet,mutton,oatmeal,pork);
         Worker John = new Worker();
-        Grass potato = new Grass(3);
-        Meat rabbit = new Meat(4);
-        Meat whale = new Meat(2);
-        Zebra Alfa = new Zebra("Альфа", 80);
-        Donkey Beta = new Donkey("Бета", 80);
-        Duck Charlie = new Duck("Чарли", 80);
-        Fish killer_whale = new Fish("Танк", 80);
-        Tiger Echo = new Tiger("Эхо", 80);
-        John.feed(rabbit, Charlie);
-        John.feed(potato, Beta);
-        John.feed(whale, killer_whale);
-        John.feed(potato, Echo);
+        Zebra Alfa = new Zebra("Альфа", 280);
+        Donkey Beta = new Donkey( "Бета", 90);
+        Duck Charlie = new Duck( "Чарли", 2);
+        Fish killer_whale = new Fish( "Танк", 2000);
+        Tiger Echo = new Tiger( "Эхо", 250);
+        List<Animal> animalArray = new ArrayList<>();
+        Collections.addAll(animalArray, Alfa, Beta, Charlie, killer_whale, Echo);
+        for (int i = 0; i < 5; i++) {
+            int a = (int) (Math.random() * 4 + 1);
+            int b = (int) (Math.random() * 8 + 1);
+            John.feed(foodArray.get(b), animalArray.get(a));
+        }
+        John.feed(foodArray.get(1), animalArray.get(0));
+
         John.getVoice(Charlie);
         John.getVoice(Echo);
         John.getVoice(Beta);
         Echo.run();
 //        John.getVoice(killer_whale); // для вызова исключения
         Alfa.run();
-        Animal[] swimmingPools = new Animal[4];
+        Swim[] swimmingPools = new Swim[4];
         swimmingPools[0] = Beta;
         swimmingPools[1] = Charlie;
         swimmingPools[2] = Echo;
@@ -32,8 +47,6 @@ public class Zoo {
         for (int i = 0; i < 4; i++) {
             System.out.println(swimmingPools[i].toString());
         }
-
-
     }
 
 }

@@ -1,5 +1,5 @@
 package food;
-public class Meat extends Food{
+public abstract class Meat extends Food{
     int callories;
     public Meat (int callories){
         super(callories);
